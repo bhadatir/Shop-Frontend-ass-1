@@ -7,7 +7,7 @@ function ShopNavbar() {
     return (
         <>
         <nav className="bg-gray-800 p-4 fixed top-0 left-0 w-full">
-            <div className="container mx-auto flex justify-between ">
+            <div className="flex justify-between ">
             <div className="text-white font-bold text-[25px]">Vendor Portal</div>
             <div className="space-x-4">
                 <button onClick={() => setShowForm(true)} className="text-black">Add Product</button>

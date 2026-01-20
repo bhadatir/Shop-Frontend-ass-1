@@ -28,10 +28,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ id, name, price, category
                 {stock > 0 && stock < 5 && <div className="text-orange-200 font-bold bg-orange-600 m-1">Limited Quantity</div>}
                 {price > 500 && <div className="text-yellow-200 font-bold bg-yellow-600 m-1">Premium</div>}
             </div>
-            <button onClick={() => deleteProduct(id)} className="mt-1">
+            <button onClick={() => deleteProduct(id)} className="mt-0">
                 Delete Product
             </button>
-            {/* <button onClick={() => editProduct(id)} className="mt-4">
+            {/* <button onClick={() => editProduct(id)} className="mt-0">
                 Edit Product
             </button> */}
         </div>

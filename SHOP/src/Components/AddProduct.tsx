@@ -10,7 +10,14 @@ interface Product {
 }
 
 export default function AddProduct() {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<Omit<Product, 'id'>>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<Omit<Product, 'id'>>(
+        { defaultValues: {
+            name: '',
+            price: 0,
+            category: '',
+            stock: 0
+        } }
+    );
 
     const onSubmit = (data: Omit<Product, 'id'>) => {
         const products = JSON.parse(localStorage.getItem('products') || '[]');
@@ -48,6 +55,7 @@ export default function AddProduct() {
                 placeholder="Category"
                 className="w-full p-2 mb-4 border"
             />
+            {errors.category && <p className="text-red-500 mb-4">{errors.category.message}</p>}
 
             <input
                 {...register('stock', { required: "Stock is required", valueAsNumber: true })}
@@ -55,6 +63,7 @@ export default function AddProduct() {
                 placeholder="Stock Quantity"
                 className="w-full p-2 mb-4 border"
             />
+            {errors.stock && <p className="text-red-500 mb-4">{errors.stock.message}</p>}
 
             <button type="submit" className="text-black">
                 Add Product
