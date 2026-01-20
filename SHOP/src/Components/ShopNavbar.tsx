@@ -1,16 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
+import AddProduct from './AddProduct';
 
 function ShopNavbar() {
+    const [showForm, setShowForm] = useState(false);
     return (
+        <>
         <nav className="bg-gray-800 p-4 fixed top-0 left-0 w-full">
             <div className="container mx-auto flex justify-between ">
-            <div className="text-white font-bold">Vendor Portal</div>
+            <div className="text-white font-bold text-[25px]">Vendor Portal</div>
             <div className="space-x-4">
-                <span className="text-gray-400">Home</span>
-                <span className="text-gray-400">Products</span>
+                <button onClick={() => setShowForm(true)} className="text-black">Add Product</button>
             </div>
             </div>
         </nav>
+        {showForm && (
+                <div className="fixed inset-0 bg-transparent flex items-center justify-center">
+                    <div className="bg-gray-200 p-8 w-96">
+                        <button onClick={() => setShowForm(false)} className="float-right text-gray-600 mb-5">✕</button>
+                        <AddProduct />
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
